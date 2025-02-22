@@ -1,7 +1,17 @@
 const express = require('express')
 const https = require('https')
+const connectDB = require('./db/dbConfig')
+const routes = require('./routers/userRoutes')
 const app = express()
+var bodyParser = require('body-parser')
 const port = 3000
+
+app.use(express.json())
+app.use(bodyParser)
+app.use('/api',routes)
+
+
+connectDB()
 
 
 /*
